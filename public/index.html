@@ -1,0 +1,77 @@
+<!doctype html>
+    <html>
+        <head>
+            <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+            <link rel='stylesheet' href='./styley.css'>
+        </head>
+            <body>
+<section id='pwn'>
+        <button onclick='jax()'>notes</button>
+        <button v-on:click='sortingHat'>sort</button>
+        <table cellpadding='3'>
+                <tr v-for='(thing, index) in decimal'>
+                    <td> {{ index+1 }} </td>
+                    <td>{{ thing }} </td>
+                    <!-- <td>{{ star.fraction[index] }} </td> -->
+                </tr>
+        </table>
+</section>
+<section>
+    <form method='POST' action='/shoot'>
+        <fieldset>
+            <legend>add note</legend>
+            <textarea name='newNote'></textarea><br>
+            <input type='submit'>
+        </fieldset>
+    </form>
+</section>
+<section id='gui'>
+    <code v-for='(note, index) in dec'> {{ index+1 }} <br/> {{ note }} <br/>  {{ frac[index] }} </code>
+</section>
+            </body>
+    <script>
+function jax() {
+    let ajax = new XMLHttpRequest();
+        ajax.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                let parsed = JSON.parse(this.responseText);
+                    for (let i = 0; i < parsed.length; i++) {
+                        star.decimal.push(parsed[i].dec)
+                        star.fraction.push(parsed[i].frac)
+                    }
+            }
+        }
+            ajax.open('GET', '/shit', true);
+            ajax.send();
+}
+            
+let star = new Vue({
+    el:'#pwn', 
+    data:{
+        decimal:[],
+        fraction:[]
+    },
+    methods:{
+        sortingHat:function() {
+            this.decimal = this.decimal.sort()
+        }
+    }
+})
+// Vue.component('pix', {
+//     template:`<span>{{  }}</span>`,
+//     data() {
+//         return {
+//             title:'fuck'
+//         }
+//     }
+// })
+let gui = new Vue({
+    el:'#gui',
+    data:{
+        dec:star.decimal,
+        frac:star.fraction
+    }
+})
+    </script>
+    </html>
+

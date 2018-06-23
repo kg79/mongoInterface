@@ -1,0 +1,30 @@
+* {
+    font-family:sans-serif;
+} form {
+    width:fit-content;
+    font-family:sans-serif;
+} table {
+    border-collapse:collapse;
+} td {
+    border:solid 1px green;
+} #gui {
+    background:pink;
+    width:fit-content;
+    margin:auto;
+    padding:2%;
+    display:flex;
+} li {
+    border:solid 1px black;
+} code {
+    background:magenta;
+    border:solid 1px green;
+    flex-direction: row;
+    margin:auto;
+    flex:1 1 1 1 1;
+    align-items: center;
+    width:50px;
+    overflow: hidden;
+} #pwn {
+    overflow: hidden;
+    width:7vw;
+}
